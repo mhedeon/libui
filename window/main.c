@@ -1,0 +1,25 @@
+#include "window.h"
+
+/*
+**	For tests.
+*/
+int main(int ac, char **av)
+{
+	SDL_Init(SDL_INIT_EVERYTHING);
+	t_window* w = create_win("test", 500, 300);
+
+	color_buffer(w, &(SDL_Color){196, 236, 20, 0});
+	color_area(w, &(SDL_Rect){0, 0, 100, 150}, & (SDL_Color){128, 128, 128, 0});
+	clear_area(w, &(SDL_Rect){15, 15, 23, 45});
+	clear_buffer(w);
+	win_upd(w);
+	error_log("all fine");
+	SDL_Delay(2000);
+
+	close_win(&w);
+
+	if (w != NULL)
+		printf("Error\n");
+	SDL_Quit();
+	return (0);
+}
