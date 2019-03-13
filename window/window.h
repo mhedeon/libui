@@ -38,6 +38,7 @@ t_window* create_win(char* title, int w, int h);
 /*
 **	\brief Destroy the specified structure and sets the pointer to NULL.
 **	\param win Double pointer to t_window structure.
+**	\note Sets the poiner to NULL
 */
 void close_win(t_window** win);
 
@@ -46,7 +47,26 @@ void close_win(t_window** win);
 **	\param win Pointer to t_window structure.
 **	\note buffer -> texture -> render.
 */
-void	win_upd(t_window* win);
+void	upd_win(t_window* win);
+
+/*
+**	\brief Draws a part the context on the window.
+**	\param win Pointer to t_window structure.
+**	\param r A pointer to the rectangular of pixels to update.
+**	\note Updates a part of the texture from the buffer.
+**	Copies the entire texture into a renderer with a previous renderer cleanup.
+*/
+void			upd_area_tex(t_window* win, SDL_Rect* r);
+
+/*
+**	\brief Draws a part the context on the window.
+**	\param win Pointer to t_window structure.
+**	\param r A pointer to the rectangular of pixels to update.
+**	\note Updates entire texture from the buffer.
+**	Copies a part of the texture to the same part of the renderer
+**	without a previous renderer cleanup.
+*/
+void			upd_area_ren(t_window* win, SDL_Rect* r);
 
 /*
 **	win.c | end
