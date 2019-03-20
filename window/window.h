@@ -11,7 +11,6 @@
 #  include <SDL_image.h>
 #  include <SDL_ttf.h>
 #  include <SDL_mixer.h>
-# endif
 # elif _linux_
 #  include "SDL.h"
 #  include "SDL_image.h"
@@ -21,9 +20,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-# define KEY e.type == SDL_KEYDOWN && e.key.keysym.sym
-# define L_CLICK SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)
-# define R_CLICK SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT)
+// # define KEY e.type == SDL_KEYDOWN && e.key.keysym.sym
+// # define L_CLICK SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)
+// # define R_CLICK SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT)
 
 typedef struct		s_window
 {
