@@ -1,7 +1,23 @@
 #ifndef WINDOW_H
 # define WINDOW_H
 
-# include <SDL.h>
+# ifndef _APPLE_
+#  include "SDL.h"
+#  include "SDL_image.h"
+#  include "SDL_ttf.h"
+#  include "SDL_mixer.h"
+# elif _WIN32
+#  include <SDL.h>
+#  include <SDL_image.h>
+#  include <SDL_ttf.h>
+#  include <SDL_mixer.h>
+# endif
+# elif _linux_
+#  include "SDL.h"
+#  include "SDL_image.h"
+#  include "SDL_ttf.h"
+#  include "SDL_mixer.h"
+# endif
 # include <stdio.h>
 # include <stdlib.h>
 
