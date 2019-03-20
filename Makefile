@@ -1,10 +1,26 @@
-NAME = libmgl
+NAME = lll
+
+HDIR = ./headers
+
+HEADERS = $(addprefix $(HDIR)/, window.h)
+
+OBJ_DIR = ./obj
+
+TEST_DIR = ./test
 
 TEST_SRC = main.c
 
-WINDOW_SRC = draw.c win.c
+WINDOW_DIR = ./window
 
-WINDOW_OBJ = $(WINDOW_SRC:.c=.o)
+WINDOW_SRC = win.c draw.c
+
+SRC_LIST = $(addprefix $(WINDOW_DIR)/, $(WINDOW_SRC))
+
+SRC_LIST += $(addprefix $(TEST_DIR)/, $(TEST_SRC))
+
+OBJ_LIST = $(addprefix $(OBJ_DIR)/, $(WINDOW_SRC:.c=.o))
+
+OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(TEST_SRC:.c=.o))
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -12,7 +28,7 @@ INCLUDES = -I./frameworks/SDL2.framework/Headers/ \
 			-I./frameworks/SDL2_image.framework/Headers/ \
 			-I./frameworks/SDL2_mixer.framework/Headers/ \
 			-I./frameworks/SDL2_ttf.framework/Headers/ \
-			-F./frameworks -I./libft
+			-F./frameworks
 
 FRAMEWORKS = -F./frameworks -rpath ./frameworks -framework SDL2 \
 												-framework SDL2_image \
@@ -21,21 +37,23 @@ FRAMEWORKS = -F./frameworks -rpath ./frameworks -framework SDL2 \
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@make -C libft
-	@gcc -g -o $(NAME) $(OBJ) $(FRAMEWORKS) -L./libft -lft
+$(NAME): $(OBJ_DIR) $(OBJ_LIST) $(HEADERS)
+	gcc -o $(NAME) $(OBJ_LIST) $(FRAMEWORKS)
 
-%.o: %.c
-	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
+$(OBJ_DIR):
+	mkdir $(OBJ_DIR)
+
+$(OBJ_LIST): $(OBJ_DIR)/%.o : $(filter %$*.c, $(SRC_LIST)) $(HEADERS)
+	gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
 
 clean:
-	@make -C libft clean
-	@rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@make -C libft fclean
-	@rm -f $(NAME)
-	@rm -f $(OBJ)
+	rm -f $(NAME)
 
 re: fclean all
-	@make -C libft re
+
+pr: print-SRC_LIST print-OBJ_LIST print-HEADERS
+
+print-%  : ; @echo $* = $($*)
