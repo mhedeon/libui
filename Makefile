@@ -1,8 +1,13 @@
 NAME = libmgl
 
 #------------------------------- HEADERS ---------------------------------------
-HDIR = ./headers
-HEADERS = $(addprefix $(HDIR)/, window.h)
+H_DIR = ./headers
+
+H_LIST = libmgl.h \
+			window.h \
+			ttf.h
+
+HEADERS = $(addprefix $(H_DIR)/, $(H_LIST))
 #-------------------------------------------------------------------------------
 
 #------------------------------- TEST ------------------------------------------
@@ -25,17 +30,26 @@ WINDOW_SRC = window_create.c \
 WINDOW_SRC_LIST = $(addprefix $(WINDOW_DIR)/, $(WINDOW_SRC))
 #-------------------------------------------------------------------------------
 
+#------------------------------- TTF -------------------------------------------
+TTF_DIR = ./ttf
+
+TTF_SRC = ttf.c
+
+TTF_SRC_LIST = $(addprefix $(TTF_DIR)/, $(TTF_SRC))
+#-------------------------------------------------------------------------------
+
 #------------------------------- OBJECTS ---------------------------------------
 OBJ_DIR = ./obj
 
 OBJ_LIST = $(addprefix $(OBJ_DIR)/, $(TEST_SRC:.c=.o))
 OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(WINDOW_SRC:.c=.o))
+OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(TTF_SRC:.c=.o))
 #-------------------------------------------------------------------------------
 
 #------------------------------- INCLUDES --------------------------------------
 FLAGS = -Wall -Werror -Wextra
 
-INCLUDES = -I $(HDIR) \
+INCLUDES = -I $(H_DIR) \
  			-I./frameworks/SDL2.framework/Headers/ \
 			-I./frameworks/SDL2_image.framework/Headers/ \
 			-I./frameworks/SDL2_mixer.framework/Headers/ \
@@ -68,6 +82,10 @@ $(OBJ_DIR)/%.o : $(TEST_DIR)/%.c $(HEADERS)
 
 #------------------------------- WINDOW
 $(OBJ_DIR)/%.o : $(WINDOW_DIR)/%.c $(HEADERS)
+	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
+
+#------------------------------- TTF
+$(OBJ_DIR)/%.o : $(TTF_DIR)/%.c $(HEADERS)
 	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
 
 #-------------------------------------------------------------------------------

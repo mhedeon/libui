@@ -1,4 +1,4 @@
-#include "window.h"
+#include "libmgl.h"
 
 int	error_log(char *message)
 {

@@ -1,4 +1,4 @@
-#include "window.h"
+#include "libmgl.h"
 
 /*
 **	For tests.
@@ -21,5 +21,7 @@ int main()
 	if (w != NULL)
 		printf("Error\n");
 	SDL_Quit();
+
+	foo();
 	return (0);
 }

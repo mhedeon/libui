@@ -1,4 +1,4 @@
-#include "window.h"
+#include "libmgl.h"
 
 void  clear_area(t_window* win, SDL_Rect* area)
 {

@@ -1,4 +1,4 @@
-#include "window.h"
+#include "libmgl.h"
 
 void	set_pixel(t_window *win, SDL_Color *color, int x, int y)
 {

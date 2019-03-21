@@ -1,4 +1,4 @@
-#include "window.h"
+#include "libmgl.h"
 
 void			upd_win(t_window *win)
 {

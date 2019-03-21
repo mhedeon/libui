@@ -1,4 +1,4 @@
-#include "window.h"
+#include "libmgl.h"
 
 static int		init_win(t_window *win, char *title, int w, int h)
 {
