@@ -3,7 +3,7 @@
 /*
 **	For tests.
 */
-int main(int ac, char **av)
+int main()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	t_window* w = create_win("test", 500, 300);
