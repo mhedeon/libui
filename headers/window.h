@@ -36,7 +36,7 @@ typedef struct		s_window
 }					t_window;
 
 /*
-**	win.c | start
+**	---------------------------- window_create.c | start
 */
 
 /*
@@ -48,21 +48,29 @@ typedef struct		s_window
 **	and buffer, or NULL if creation failed.
 **	\note Default position of the window if SDL_WINDOWPOS_CENTERED.
 */
-t_window* create_win(char* title, int w, int h);
+t_window*	create_win(char *title, int w, int h);
 
 /*
 **	\brief Destroy the specified structure and sets the pointer to NULL.
 **	\param win Double pointer to t_window structure.
 **	\note Sets the poiner to NULL
 */
-void close_win(t_window** win);
+void	close_win(t_window **win);
+
+/*
+**	---------------------------- window_create.c | end
+*/
+
+/*
+**	---------------------------- window_update.c | start
+*/
 
 /*
 **	\brief Draws the context on the window.
 **	\param win Pointer to t_window structure.
 **	\note buffer -> texture -> render.
 */
-void	upd_win(t_window* win);
+void	upd_win(t_window *win);
 
 /*
 **	\brief Draws a part the context on the window.
@@ -71,7 +79,7 @@ void	upd_win(t_window* win);
 **	\note Updates a part of the texture from the buffer.
 **	Copies the entire texture into a renderer with a previous renderer cleanup.
 */
-void			upd_area_tex(t_window* win, SDL_Rect* r);
+void	upd_area_tex(t_window *win, SDL_Rect *r);
 
 /*
 **	\brief Draws a part the context on the window.
@@ -81,23 +89,42 @@ void			upd_area_tex(t_window* win, SDL_Rect* r);
 **	Copies a part of the texture to the same part of the renderer
 **	without a previous renderer cleanup.
 */
-void			upd_area_ren(t_window* win, SDL_Rect* r);
+void	upd_area_ren(t_window *win, SDL_Rect *r);
 
 /*
-**	win.c | end
+**	---------------------------- window_update.c | end
 */
 
 /*
-**	draw.c | start
+**	---------------------------- draw.c | start
 */
-int				error_log(char* message);
-void	set_pixel(t_window* win, SDL_Color* color, int x, int y);
-void  clear_area(t_window* win, SDL_Rect* area);
-void color_area(t_window* win, SDL_Rect* area, SDL_Color* color);
-void	clear_buffer(t_window* win);
-void	color_buffer(t_window* win, SDL_Color* color);
+void	clear_area(t_window *win, SDL_Rect *area);
+void	color_area(t_window *win, SDL_Rect *area, SDL_Color *color);
+void	clear_buffer(t_window *win);
+void	color_buffer(t_window *win, SDL_Color *color);
 /*
-**	draw.c | end
+**	---------------------------- draw.c | end
 */
+
+/*
+**	---------------------------- error.c | start
+*/
+
+int		error_log(char *message);
+
+/*
+**	---------------------------- error.c | end
+*/
+
+/*
+**	---------------------------- pixel.c | start
+*/
+
+void	set_pixel(t_window *win, SDL_Color *color, int x, int y);
+
+/*
+**	---------------------------- pixel.c | end
+*/
+
 
 #endif

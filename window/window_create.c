@@ -1,6 +1,6 @@
 #include "window.h"
 
-static int		init_win(t_window* win, char *title, int w, int h)
+static int		init_win(t_window *win, char *title, int w, int h)
 {
 	win->win = NULL;
 	win->ren = NULL;
@@ -44,10 +44,10 @@ t_window		*create_win(char *title, int w, int h)
 	return (win);
 }
 
-void			close_win(t_window** win)
+void			close_win(t_window **win)
 {
 	if (*win == NULL)
-		return;
+		return ;
 	if ((*win)->tex != NULL)
 		SDL_DestroyTexture((*win)->tex);
 	if ((*win)->ren != NULL)
@@ -61,31 +61,4 @@ void			close_win(t_window** win)
 	(*win)->color = (SDL_Color) { 0, 0, 0, 0 };
 	free(*win);
 	*win = NULL;
-}
-
-void			upd_win(t_window* win)
-{
-	SDL_UpdateTexture(win->tex, NULL, win->buff,
-		win->w * sizeof(Uint32));
-	SDL_RenderClear(win->ren);
-	SDL_RenderCopy(win->ren, win->tex, NULL, NULL);
-	SDL_RenderPresent(win->ren);
-}
-
-void			upd_area_tex(t_window* win, SDL_Rect *r)
-{
-	SDL_UpdateTexture(win->tex, r, win->buff,
-		win->w * sizeof(Uint32));
-	SDL_RenderClear(win->ren);
-	SDL_RenderCopy(win->ren, win->tex, NULL, NULL);
-	SDL_RenderPresent(win->ren);
-}
-
-void			upd_area_ren(t_window* win, SDL_Rect* r)
-{
-	SDL_UpdateTexture(win->tex, NULL, win->buff,
-		win->w * sizeof(Uint32));
-	SDL_RenderClear(win->ren);
-	SDL_RenderCopy(win->ren, win->tex, r, r);
-	SDL_RenderPresent(win->ren);
 }

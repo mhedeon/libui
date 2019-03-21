@@ -11,8 +11,8 @@ int main()
 	color_buffer(w, &(SDL_Color){196, 236, 20, 0});
 	color_area(w, &(SDL_Rect){0, 0, 100, 150}, & (SDL_Color){128, 128, 128, 0});
 	clear_area(w, &(SDL_Rect){15, 15, 23, 45});
-	clear_buffer(w);
-	win_upd(w);
+	// clear_buffer(w);
+	upd_win(w);
 	error_log("all fine");
 	SDL_Delay(2000);
 

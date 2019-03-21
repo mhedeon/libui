@@ -1,22 +1,5 @@
 #include "window.h"
 
-int				error_log(char* message)
-{
-	SDL_Log("\x1b[31m%s %s\x1b[0m\n", message, SDL_GetError());
-	SDL_ClearError();
-	return (0);
-}
-
-
-void	set_pixel(t_window* win, SDL_Color* color, int x, int y)
-{
-	win->buff[y * win->w + x] =
-		color->r << 24 |
-		color->g << 16 |
-		color->b << 8 |
-		color->a;
-}
-
 void  clear_area(t_window* win, SDL_Rect* area)
 {
 	int x;

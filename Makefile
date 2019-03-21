@@ -16,7 +16,10 @@ TEST_SRC_LIST = $(addprefix $(TEST_DIR)/, TEST_SRC)
 #------------------------------- WINDOW ----------------------------------------
 WINDOW_DIR = ./window
 
-WINDOW_SRC = win.c \
+WINDOW_SRC = window_create.c \
+				window_update.c \
+				error.c \
+				pixel.c \
 				draw.c
 
 WINDOW_SRC_LIST = $(addprefix $(WINDOW_DIR)/, $(WINDOW_SRC))
