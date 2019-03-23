@@ -18,8 +18,7 @@ t_checkbox *checkbox_create(Uint8 status, Uint8 available, int x, int y)
 	}
 	new->status = status;
 	new->available = available;
-	new->pos.x = x;
-	new->pos.y = y;
+	new->pos = (SDL_Rect) { x, y, CHECKBOX_SIZE, CHECKBOX_SIZE };
 	return (new);
 }
 
