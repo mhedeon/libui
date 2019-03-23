@@ -2,7 +2,10 @@
 
 int	error_log(char *message)
 {
-	SDL_Log("\x1b[31m%s %s\x1b[0m\n", message, SDL_GetError());
+	if (message == NULL)
+		SDL_Log("\x1b[31m%s\x1b[0m\n", SDL_GetError());
+	else
+		SDL_Log("\x1b[31m%s %s\x1b[0m\n", message, SDL_GetError());
 	SDL_ClearError();
 	return (0);
 }
