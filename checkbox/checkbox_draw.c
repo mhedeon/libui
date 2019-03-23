@@ -40,6 +40,22 @@ static void draw_check_on(t_window* win, int x, int y)
 	color_area(win, &(SDL_Rect){x + 5, y + 11, 3, 1}, BLACK);
 }
 
+static void draw_check_unavailable(t_window* win, int x, int y)
+{
+	int xx;
+	int yy;
+
+	yy = y - 1;
+	while (++yy < (y + CHECKBOX_SIZE))
+	{
+		xx = x - 1;
+		while (++xx - (x + CHECKBOX_SIZE))
+		{
+			win->buff[yy * win->w + xx] = 2 * ((win->buff[yy * win->w + xx] & 0xfcfcfcfc) >> 2);
+		}
+	}
+}
+
 void draw_checkbox(t_window* win, t_checkbox* check)
 {
 	if (check == NULL)
@@ -53,4 +69,6 @@ void draw_checkbox(t_window* win, t_checkbox* check)
 		draw_check_off(win, check->pos.x, check->pos.y);
 	else
 		error_log("Incorrect state checkbox");
+	if (check->unavailable)
+		draw_check_unavailable(win, check->pos.x, check->pos.y);
 }
