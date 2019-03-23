@@ -6,15 +6,20 @@
 int main()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	t_window* w = create_win("test", 500, 300);
+	t_window* w = create_win("test", 300, 300);
 
-	color_buffer(w, &(SDL_Color){196, 236, 20, 0});
-	color_area(w, &(SDL_Rect){0, 0, 100, 150}, & (SDL_Color){128, 128, 128, 0});
-	clear_area(w, &(SDL_Rect){15, 15, 23, 45});
-	// clear_buffer(w);
+	color_buffer(w, &(SDL_Color){136, 255, 38});
+	
+	asd(w);
+
 	upd_win(w);
-	error_log("all fine");
-	SDL_Delay(2000);
+	
+
+	SDL_Event e;
+	while (SDL_PollEvent(&e) || 1)
+		if (e.type == SDL_QUIT || (KEY == SDLK_ESCAPE))
+			break;
+
 
 	close_win(&w);
 

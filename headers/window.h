@@ -1,26 +1,7 @@
 #ifndef WINDOW_H
 # define WINDOW_H
 
-# ifndef _APPLE_
-#  include "SDL.h"
-#  include "SDL_image.h"
-#  include "SDL_ttf.h"
-#  include "SDL_mixer.h"
-# elif _WIN32
-#  include <SDL.h>
-#  include <SDL_image.h>
-#  include <SDL_ttf.h>
-#  include <SDL_mixer.h>
-# elif _linux_
-#  include "SDL.h"
-#  include "SDL_image.h"
-#  include "SDL_ttf.h"
-#  include "SDL_mixer.h"
-# endif
-# include <stdio.h>
-# include <stdlib.h>
-
-// # define KEY e.type == SDL_KEYDOWN && e.key.keysym.sym
+# define KEY e.type == SDL_KEYDOWN && e.key.keysym.sym
 // # define L_CLICK SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)
 // # define R_CLICK SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT)
 
