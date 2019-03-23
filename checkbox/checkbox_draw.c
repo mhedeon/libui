@@ -50,9 +50,8 @@ static void draw_check_unavailable(t_window* win, int x, int y)
 	{
 		xx = x - 1;
 		while (++xx - (x + CHECKBOX_SIZE))
-		{
-			win->buff[yy * win->w + xx] = 2 * ((win->buff[yy * win->w + xx] & 0xfcfcfcfc) >> 2);
-		}
+			win->buff[yy * win->w + xx] = 2 *
+							((win->buff[yy * win->w + xx] & 0xfcfcfcfc) >> 2);
 	}
 }
 
@@ -68,7 +67,7 @@ void draw_checkbox(t_window* win, t_checkbox* check)
 	else if (check->status == CHECK_OFF)
 		draw_check_off(win, check->pos.x, check->pos.y);
 	else
-		error_log("Incorrect state checkbox");
-	if (check->unavailable)
+		error_log("Incorrect checkbox state");
+	if (check->available == CHECK_UNAVAILABLE)
 		draw_check_unavailable(win, check->pos.x, check->pos.y);
 }

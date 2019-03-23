@@ -34,4 +34,6 @@
 # include "ttf.h"
 # include "checkbox.h"
 
+# define INVALID_POINTER 0xFF
+
 #endif

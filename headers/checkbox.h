@@ -4,17 +4,66 @@
 # include "libmgl.h"
 
 # define CHECKBOX_SIZE 15
+
 # define CHECK_ON 1
 # define CHECK_OFF 0
-# define CHECK_UNAVAILABLE 81
+
+# define CHECK_AVAILABLE 0x7E	
+# define CHECK_UNAVAILABLE 0x81
 
 typedef struct	s_checkbox
 {
 	Uint8		status;
-	Uint8		unavailable;
+	Uint8		available;
 	SDL_Rect	pos;
 }				t_checkbox;
 
+/*
+**	---------------------------- checkbox_draw.c | start
+*/
+
 void draw_checkbox(t_window* win, t_checkbox* check);
+
+/*
+**	---------------------------- checkbox_draw.c | end
+*/
+
+/*
+**	---------------------------- checkbox_create.c | start
+*/
+
+t_checkbox* checkbox_create(Uint8 status, Uint8 available, int x, int y);
+void checkbox_delete(t_checkbox** check);
+
+/*
+**	---------------------------- checkbox_create.c | end
+*/
+
+/*
+**	---------------------------- checkbox_set_data.c | start
+*/
+
+void checkbox_set_status(t_checkbox* check, Uint8 status);
+void checkbox_set_available(t_checkbox* check, Uint8 available);
+void checkbox_set_pos(t_checkbox* check, int x, int y);
+
+/*
+**	---------------------------- checkbox_set_data.c | end
+*/
+
+/*
+**	---------------------------- checkbox_get_data.c | start
+*/
+
+Uint8 checkbox_get_status(t_checkbox* check);
+Uint8 checkbox_get_availalbe(t_checkbox* check);
+int checkbox_get_pos_x(t_checkbox* check);
+int checkbox_get_pos_y(t_checkbox* check);
+SDL_Rect checkbox_get_pos(t_checkbox* check);
+
+/*
+**	---------------------------- checkbox_get_data.c | end
+*/
+
 
 #endif
