@@ -27,9 +27,36 @@ int main()
 	
 
 	SDL_Event e;
+	int click = 0;
 	while (SDL_PollEvent(&e) || 1)
+	{
 		if (e.type == SDL_QUIT || (KEY == SDLK_ESCAPE))
 			break;
+		int x, y;
+		
+		if (e.type == SDL_MOUSEBUTTONUP)
+			click = 0;
+		if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT) && !click)
+		{
+			printf("LEFT click | x: %d | y: %d\n", x, y);
+			if (x > checkbox_get_pos_x(on) && y > checkbox_get_pos_y(on) &&
+				x < checkbox_get_pos_x(on) + CHECKBOX_SIZE &&
+				y < checkbox_get_pos_y(on) + CHECKBOX_SIZE)
+				checkbox_set_invert_status(on);
+		}
+		if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_RIGHT) && !click)
+		{
+			printf("RIGHT click | x: %d | y: %d\n", x, y);
+			if (x > checkbox_get_pos_x(on) && y > checkbox_get_pos_y(on) &&
+				x < (checkbox_get_pos_x(on) + CHECKBOX_SIZE) &&
+				y < (checkbox_get_pos_y(on) + CHECKBOX_SIZE))
+				checkbox_set_invert_available(on);
+		}
+		if (e.type == SDL_MOUSEBUTTONDOWN)
+			click = 1;
+		draw_checkbox(w, on);
+		upd_win(w);
+	}
 
 	checkbox_delete(&on);
 	close_win(&w);

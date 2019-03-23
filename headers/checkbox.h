@@ -44,7 +44,9 @@ void checkbox_delete(t_checkbox** check);
 */
 
 void checkbox_set_status(t_checkbox* check, Uint8 status);
+void checkbox_set_invert_status(t_checkbox* check);
 void checkbox_set_available(t_checkbox* check, Uint8 available);
+void checkbox_set_invert_available(t_checkbox* check);
 void checkbox_set_pos(t_checkbox* check, int x, int y);
 
 /*
