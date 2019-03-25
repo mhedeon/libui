@@ -47,7 +47,8 @@ CHECKBOX_DIR = ./checkbox
 CHECKBOX_SRC = checkbox_create.c \
 				checkbox_draw.c \
 				checkbox_get_data.c \
-				checkbox_set_data.c
+				checkbox_set_data.c \
+				checkbox_check.c
 
 CHECKBOX_SRC_LIST = $(addprefix $(CHECKBOX_DIR)/, $(CHECKBOX_SRC_LIST))
 #-------------------------------------------------------------------------------
@@ -129,7 +130,7 @@ $(OBJ_DIR)/%.o : $(CHECKBOX_DIR)/%.c $(HEADERS)
 #------------------------------- COLOR
 $(OBJ_DIR)/%.o : $(COLOR_DIR)/%.c $(HEADERS)
 	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
-	
+
 #------------------------------- COLOR PICKER
 $(OBJ_DIR)/%.o : $(PICKER_DIR)/%.c $(HEADERS)
 	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)

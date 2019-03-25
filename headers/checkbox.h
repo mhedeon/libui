@@ -65,5 +65,18 @@ SDL_Rect checkbox_get_pos(t_checkbox*check);
 **	---------------------------- checkbox_get_data.c | end
 */
 
+/*
+**	---------------------------- checkbox_check.c | start
+*/
+
+int checkbox_within(t_checkbox *check, int x, int y);
+int checkbox_is_on(t_checkbox *check);
+int checkbox_is_off(t_checkbox *check);
+int checkbox_is_available(t_checkbox *check);
+int checkbox_is_unavailable(t_checkbox *check);
+
+/*
+**	---------------------------- checkbox_check.c | end
+*/
 
 #endif
