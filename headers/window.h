@@ -77,14 +77,14 @@ void	upd_area_ren(t_window *win, SDL_Rect *r);
 */
 
 /*
-**	---------------------------- draw.c | start
+**	---------------------------- window_draw.c | start
 */
 void	clear_area(t_window *win, SDL_Rect *area);
 void	color_area(t_window *win, SDL_Rect *area, SDL_Color *color);
 void	clear_buffer(t_window *win);
 void	color_buffer(t_window *win, SDL_Color *color);
 /*
-**	---------------------------- draw.c | end
+**	---------------------------- window_draw.c | end
 */
 
 /*

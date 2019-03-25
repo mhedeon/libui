@@ -33,6 +33,8 @@
 # include "window.h"
 # include "ttf.h"
 # include "checkbox.h"
+# include "color.h"
+# include "color_picker.h"
 
 # define INVALID_POINTER 0xFF
 

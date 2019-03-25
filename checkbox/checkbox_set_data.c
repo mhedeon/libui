@@ -1,6 +1,6 @@
 #include "libmgl.h"
 
-void checkbox_set_status(t_checkbox* check, Uint8 status)
+void checkbox_set_status(t_checkbox *check, Uint8 status)
 {
 	if (check == NULL ||
 		(status != CHECK_ON && status != CHECK_OFF) ||
@@ -9,7 +9,7 @@ void checkbox_set_status(t_checkbox* check, Uint8 status)
 	check->status = status;
 }
 
-void checkbox_set_invert_status(t_checkbox* check)
+void checkbox_set_invert_status(t_checkbox *check)
 {
 	if (check == NULL)
 		return;
@@ -19,7 +19,7 @@ void checkbox_set_invert_status(t_checkbox* check)
 		checkbox_set_status(check, CHECK_ON);
 }
 
-void checkbox_set_available(t_checkbox* check, Uint8 available)
+void checkbox_set_available(t_checkbox *check, Uint8 available)
 {
 	if (check == NULL ||
 		(available != CHECK_AVAILABLE && available != CHECK_UNAVAILABLE))
@@ -27,7 +27,7 @@ void checkbox_set_available(t_checkbox* check, Uint8 available)
 	check->available = available;
 }
 
-void checkbox_set_invert_available(t_checkbox* check)
+void checkbox_set_invert_available(t_checkbox *check)
 {
 	if (check == NULL)
 		return;
@@ -37,7 +37,7 @@ void checkbox_set_invert_available(t_checkbox* check)
 		checkbox_set_available(check, CHECK_AVAILABLE);
 }
 
-void checkbox_set_pos(t_checkbox* check, int x, int y)
+void checkbox_set_pos(t_checkbox *check, int x, int y)
 {
 	if (check == NULL)
 		return;

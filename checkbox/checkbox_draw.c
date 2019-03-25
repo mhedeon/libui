@@ -1,8 +1,8 @@
-#include "checkbox.h"
+#include "libmgl.h"
 
 #define BLACK &(SDL_Color){0, 0, 0, 0}
 
-static void draw_check_off(t_window* win, int x, int y)
+static void draw_check_off(t_window *win, int x, int y)
 {
 	color_area(win, &(SDL_Rect){x, y, CHECKBOX_SIZE, CHECKBOX_SIZE},
 		& (SDL_Color){255, 255, 255, 0});
@@ -22,7 +22,7 @@ static void draw_check_off(t_window* win, int x, int y)
 		BLACK);
 }
 
-static void draw_check_on(t_window* win, int x, int y)
+static void draw_check_on(t_window *win, int x, int y)
 {
 	draw_check_off(win, x, y);
 
@@ -40,7 +40,7 @@ static void draw_check_on(t_window* win, int x, int y)
 	color_area(win, &(SDL_Rect){x + 5, y + 11, 3, 1}, BLACK);
 }
 
-static void draw_check_unavailable(t_window* win, int x, int y)
+static void draw_check_unavailable(t_window *win, int x, int y)
 {
 	int xx;
 	int yy;
@@ -55,7 +55,7 @@ static void draw_check_unavailable(t_window* win, int x, int y)
 	}
 }
 
-void draw_checkbox(t_window* win, t_checkbox* check)
+void draw_checkbox(t_window *win, t_checkbox *check)
 {
 	if (check == NULL)
 	{

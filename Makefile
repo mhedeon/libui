@@ -5,7 +5,10 @@ H_DIR = ./headers
 
 H_LIST = libmgl.h \
 			window.h \
-			ttf.h
+			ttf.h \
+			checkbox.h \
+			color.h \
+			color_picker.h
 
 HEADERS = $(addprefix $(H_DIR)/, $(H_LIST))
 #-------------------------------------------------------------------------------
@@ -25,7 +28,7 @@ WINDOW_SRC = window_create.c \
 				window_update.c \
 				error.c \
 				pixel.c \
-				draw.c
+				window_draw.c
 
 WINDOW_SRC_LIST = $(addprefix $(WINDOW_DIR)/, $(WINDOW_SRC))
 #-------------------------------------------------------------------------------
@@ -38,12 +41,44 @@ TTF_SRC = ttf.c
 TTF_SRC_LIST = $(addprefix $(TTF_DIR)/, $(TTF_SRC))
 #-------------------------------------------------------------------------------
 
+#------------------------------- CHECKBOX --------------------------------------
+CHECKBOX_DIR = ./checkbox
+
+CHECKBOX_SRC = checkbox_create.c \
+				checkbox_draw.c \
+				checkbox_get_data.c \
+				checkbox_set_data.c
+
+CHECKBOX_SRC_LIST = $(addprefix $(CHECKBOX_DIR)/, $(CHECKBOX_SRC_LIST))
+#-------------------------------------------------------------------------------
+
+#------------------------------- COLOR -----------------------------------------
+COLOR_DIR = ./color
+
+COLOR_SRC = convertion_hsv_rgb.c
+
+COLOR_SRC_LIST = $(addprefix $(COLOR_DIR)/, $(COLOR_SRC_LIST))
+#-------------------------------------------------------------------------------
+
+#------------------------------- COLOR PICKER ----------------------------------
+PICKER_DIR = ./color_picker
+
+PICKER_SRC = color.c \
+				palette.c \
+				slider.c
+
+PICKER_SRC_LIST = $(addprefix $(PICKER_DIR)/, $(PICKER_SRC_LIST))
+#-------------------------------------------------------------------------------
+
 #------------------------------- OBJECTS ---------------------------------------
 OBJ_DIR = ./obj
 
 OBJ_LIST = $(addprefix $(OBJ_DIR)/, $(TEST_SRC:.c=.o))
 OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(WINDOW_SRC:.c=.o))
 OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(TTF_SRC:.c=.o))
+OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(CHECKBOX_SRC:.c=.o))
+OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(COLOR_SRC:.c=.o))
+OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(PICKER_SRC:.c=.o))
 #-------------------------------------------------------------------------------
 
 #------------------------------- INCLUDES --------------------------------------
@@ -75,7 +110,6 @@ $(NAME): $(OBJ_DIR) $(OBJ_LIST) $(HEADERS)
 #-------------------------------------------------------------------------------
 
 #------------------------------- COMPILE ---------------------------------------
-
 #------------------------------- TEST
 $(OBJ_DIR)/%.o : $(TEST_DIR)/%.c $(HEADERS)
 	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
@@ -88,6 +122,17 @@ $(OBJ_DIR)/%.o : $(WINDOW_DIR)/%.c $(HEADERS)
 $(OBJ_DIR)/%.o : $(TTF_DIR)/%.c $(HEADERS)
 	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
 
+#------------------------------- CHECKBOX
+$(OBJ_DIR)/%.o : $(CHECKBOX_DIR)/%.c $(HEADERS)
+	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
+
+#------------------------------- COLOR
+$(OBJ_DIR)/%.o : $(COLOR_DIR)/%.c $(HEADERS)
+	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
+	
+#------------------------------- COLOR PICKER
+$(OBJ_DIR)/%.o : $(PICKER_DIR)/%.c $(HEADERS)
+	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
 #-------------------------------------------------------------------------------
 
 #------------------------------- CLEAN -----------------------------------------

@@ -8,7 +8,7 @@ int main()
 	SDL_Init(SDL_INIT_EVERYTHING);
 	t_window* w = create_win("test", 300, 300);
 
-	color_buffer(w, &(SDL_Color){136, 255, 38});
+	color_buffer(w, &(SDL_Color){136, 255, 38, 0});
 	
 	t_checkbox* on = checkbox_create(CHECK_ON, CHECK_AVAILABLE, 50, 50);
 	
@@ -66,5 +66,6 @@ int main()
 	SDL_Quit();
 
 	foo();
+	// system("leaks libmgl");
 	return (0);
 }
