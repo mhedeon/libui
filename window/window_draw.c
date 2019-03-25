@@ -14,11 +14,7 @@ void  clear_area(t_window* win, SDL_Rect* area)
 	{
 		x = area->x - 1;
 		while (++x < w)
-			win->buff[y * win->w + x] =
-			0 << 24 |
-			0 << 16 |
-			0 << 8 |
-			0;
+			set_pixel(win, &(SDL_Color) { 0, 0, 0, 0 }, x, y);
 	}
 }
 
@@ -36,11 +32,7 @@ void color_area(t_window* win, SDL_Rect* area, SDL_Color* color)
 	{
 		x = area->x - 1;
 		while (++x < w)
-			win->buff[y * win->w + x] =
-			color->r << 24 |
-			color->g << 16 |
-			color->b << 8 |
-			color->a;
+			set_pixel(win, color, x, y);
 	}
 }
 
