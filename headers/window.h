@@ -102,6 +102,7 @@ int		error_log(char *message);
 */
 
 void	set_pixel(t_window *win, SDL_Color *color, int x, int y);
+int window_within(t_window *win, int x, int y);
 
 /*
 **	---------------------------- pixel.c | end

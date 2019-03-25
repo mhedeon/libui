@@ -64,9 +64,7 @@ COLOR_SRC_LIST = $(addprefix $(COLOR_DIR)/, $(COLOR_SRC_LIST))
 #------------------------------- COLOR PICKER ----------------------------------
 PICKER_DIR = ./color_picker
 
-PICKER_SRC = color.c \
-				palette.c \
-				slider.c
+PICKER_SRC = 
 
 PICKER_SRC_LIST = $(addprefix $(PICKER_DIR)/, $(PICKER_SRC_LIST))
 #-------------------------------------------------------------------------------

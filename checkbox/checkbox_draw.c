@@ -50,8 +50,11 @@ static void draw_check_unavailable(t_window *win, int x, int y)
 	{
 		xx = x - 1;
 		while (++xx - (x + CHECKBOX_SIZE))
-			win->buff[yy * win->w + xx] = 2 *
+		{
+			if (window_within(win, xx, yy))
+				win->buff[yy * win->w + xx] = 2 *
 							((win->buff[yy * win->w + xx] & 0xfcfcfcfc) >> 2);
+		}
 	}
 }
 
