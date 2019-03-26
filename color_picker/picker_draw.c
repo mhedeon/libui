@@ -16,9 +16,11 @@ void picker_draw(t_window *win, t_picker *picker)
 							1.0 - (y - picker->pos.y) / (double)picker->pos.h);
 			set_pixel(win, &win->color, x, y);
 		}
-		win->color = hsv2rgb(360.0 - ((y - (double)picker->pos.y) *
+		win->color = hsv2rgb(((y - (double)picker->pos.y) *
 							360.0 / picker->pos.h), 1.0, 1.0);
 		color_area(win, &(SDL_Rect) { picker->hue.x, y, picker->hue.w, 1 },
 										&win->color);
 	}
+	slider_draw(win, picker->sl_hue);
+	slider_draw(win, picker->sl_pal);
 }

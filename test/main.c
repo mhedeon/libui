@@ -10,8 +10,8 @@ int main()
 
 	color_buffer(w, &(SDL_Color){136, 255, 38, 0});
 	
-	t_picker *pal = picker_create(50, 50, 250);
-	picker_draw(w, pal);
+	t_picker *pal = picker_create(200);
+	picker_set_pos(pal, 50, 50);
 
 
 	upd_win(w);
@@ -25,6 +25,7 @@ int main()
 		
 
 		color_buffer(w, &(SDL_Color){136, 255, 38, 0});
+	
 		picker_draw(w, pal);
 		upd_win(w);
 	}
@@ -35,7 +36,6 @@ int main()
 		printf("Error\n");
 	SDL_Quit();
 
-	foo();
 	// system("leaks libmgl");
 	return (0);
 }

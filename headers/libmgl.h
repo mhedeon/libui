@@ -34,6 +34,7 @@
 # include "ttf.h"
 # include "checkbox.h"
 # include "color.h"
+# include "slider.h"
 # include "color_picker.h"
 
 # define INVALID_POINTER 0xFF
