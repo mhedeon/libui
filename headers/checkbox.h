@@ -3,8 +3,8 @@
 
 # define CHECKBOX_SIZE 15
 
-# define CHECK_ON 1
-# define CHECK_OFF 0
+# define CHECK_ON 11
+# define CHECK_OFF 10
 
 # define CHECK_AVAILABLE 0x7E
 # define CHECK_UNAVAILABLE 0x81
