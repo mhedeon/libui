@@ -25,8 +25,6 @@ t_picker		*picker_create(int height)
 		free(new);
 		return (NULL);
 	}
-	// printf("hue | w: %d | h: %d\n", new->sl_hue->pos.w, new->sl_hue->pos.h);
-	// printf("pal | w: %d | h: %d\n", new->sl_pal->pos.w, new->sl_pal->pos.h);
 	return (new);
 }
 

@@ -1,10 +1,6 @@
 #ifndef WINDOW_H
 # define WINDOW_H
 
-# define KEY e.type == SDL_KEYDOWN && e.key.keysym.sym
-// # define L_CLICK SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)
-// # define R_CLICK SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT)
-
 typedef struct		s_window
 {
 	int				w;

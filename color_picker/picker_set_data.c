@@ -10,10 +10,6 @@ void picker_set_pos(t_picker *picker, int x, int y)
 	picker->pos = (SDL_Rect) { x, y, h, h };
 	picker->hue = (SDL_Rect) { x + h + h / 18, y, h / 18, h };
 
-	picker->hsv.s = 0.9;
-	picker->hsv.v = 0.5;
-	picker->hsv.h = 200;
-
 	slider_set_border(picker->sl_pal, &(SDL_Rect) { x, y,
 		x + picker->pos.w - 1, y + picker->pos.h - 1 });
 	slider_set_border(picker->sl_hue, &(SDL_Rect) {picker->hue.x, picker->hue.y, 
@@ -59,7 +55,7 @@ void picker_set_slider_pal(t_picker *p)
 
 	color = hsv2rgb(p->hsv.h, p->hsv.s, p->hsv.v);
 	slider_set_pos(p->sl_pal, p->pos.x + (int)(p->pos.w *
-		p->hsv.s), p->pos.h - (int)(p->pos.h * p->hsv.v));
+		p->hsv.s), p->pos.y + (int)(p->pos.h * p->hsv.v));
 	slider_set_color(p->sl_pal, &color);
 }
 

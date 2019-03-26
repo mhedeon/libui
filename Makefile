@@ -69,7 +69,8 @@ PICKER_SRC = picker_create.c \
 				picker_draw.c \
 				picker_set_data.c \
 				picker_get_data_hsv.c \
-				picker_get_data_pos.c
+				picker_get_data_pos.c \
+				picker_check.c
 
 PICKER_SRC_LIST = $(addprefix $(PICKER_DIR)/, $(PICKER_SRC_LIST))
 #-------------------------------------------------------------------------------
