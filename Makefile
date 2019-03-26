@@ -8,7 +8,8 @@ H_LIST = libmgl.h \
 			ttf.h \
 			checkbox.h \
 			color.h \
-			color_picker.h
+			color_picker.h \
+			slider.h
 
 HEADERS = $(addprefix $(H_DIR)/, $(H_LIST))
 #-------------------------------------------------------------------------------
@@ -66,9 +67,22 @@ PICKER_DIR = ./color_picker
 
 PICKER_SRC = picker_create.c \
 				picker_draw.c \
-				picker_set_data.c
+				picker_set_data.c \
+				picker_get_data_hsv.c \
+				picker_get_data_pos.c
 
 PICKER_SRC_LIST = $(addprefix $(PICKER_DIR)/, $(PICKER_SRC_LIST))
+#-------------------------------------------------------------------------------
+
+#------------------------------- in test ---------------------------------------
+#------------------------------- SLIDER ----------------------------------------
+SLIDER_DIR = ./slider
+
+SLIDER_SRC = slider_create.c \
+				slider_draw.c \
+				slider_set_data.c
+
+SLIDER_SRC_LIST = $(addprefix $(SLIDER_DIR)/, $(SLIDER_SRC_LIST))
 #-------------------------------------------------------------------------------
 
 #------------------------------- OBJECTS ---------------------------------------
@@ -80,6 +94,8 @@ OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(TTF_SRC:.c=.o))
 OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(CHECKBOX_SRC:.c=.o))
 OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(COLOR_SRC:.c=.o))
 OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(PICKER_SRC:.c=.o))
+
+OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(SLIDER_SRC:.c=.o))
 #-------------------------------------------------------------------------------
 
 #------------------------------- INCLUDES --------------------------------------
@@ -133,6 +149,10 @@ $(OBJ_DIR)/%.o : $(COLOR_DIR)/%.c $(HEADERS)
 
 #------------------------------- COLOR PICKER
 $(OBJ_DIR)/%.o : $(PICKER_DIR)/%.c $(HEADERS)
+	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
+
+#------------------------------- SLIDER in test
+$(OBJ_DIR)/%.o : $(SLIDER_DIR)/%.c $(HEADERS)
 	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
 #-------------------------------------------------------------------------------
 
