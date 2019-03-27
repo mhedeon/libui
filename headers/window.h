@@ -87,7 +87,7 @@ void	color_buffer(t_window *win, SDL_Color *color);
 **	---------------------------- error.c | start
 */
 
-int		error_log(char *message);
+int		error_log(const char *message);
 
 /*
 **	---------------------------- error.c | end

@@ -36,7 +36,7 @@ int picker_get_w(t_picker *picker);
 
 int picker_within_pal(t_picker *picker, int x, int y);
 int picker_within_hue(t_picker *picker, int x, int y);
-void picker_set_h_by_pos(t_picker *picker, int x);
+void picker_set_h_by_pos(t_picker *picker, int y);
 void picker_set_sv_by_pos(t_picker *picker, int x, int y);
 
 #endif
