@@ -29,6 +29,8 @@ void picker_set_size(t_picker *picker, int height)
 	y = picker->pos.y;
 	picker->pos = (SDL_Rect) { x, y, height, height };
 	picker->hue = (SDL_Rect) {x + height + height / 18, y, height / 18, height};
+	slider_set_size(picker->sl_hue, picker->hue.w, picker->hue.w / 2);
+	slider_set_size(picker->sl_pal, picker->hue.w / 2, picker->hue.w / 2);
 	slider_set_border(picker->sl_pal, &(SDL_Rect) { x, y,
 		x + picker->pos.w - 1, y + picker->pos.h - 1 });
 	slider_set_border(picker->sl_hue, &(SDL_Rect) {picker->hue.x, picker->hue.y, 
