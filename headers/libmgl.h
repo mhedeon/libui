@@ -26,6 +26,8 @@
 */
 # include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
+# include <unistd.h>
 
 /*
 **	Parts of libmgl
@@ -36,6 +38,7 @@
 # include "color.h"
 # include "slider.h"
 # include "color_picker.h"
+# include "screenshot.h"
 
 # define INVALID_POINTER 0xFF
 

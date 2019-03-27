@@ -16,7 +16,7 @@ int main()
 	
 	t_picker *pal = picker_create(200);
 	picker_set_pos(pal, 100, 50);
-// printf("x: %d | y: %d | w: %d | h: %d\n", pal->sl_pal->border.x, pal->sl_pal->border.y, pal->sl_pal->border.w, pal->sl_pal->border.h);
+
 	upd_win(w);
 	
 	SDL_Event e;
@@ -54,6 +54,8 @@ int main()
 			// printf("UP %d\n", i++);
 		}
 		
+		if (KEY == SDLK_s)
+			screenshot(w->ren, w->tex, NULL);
 
 		color_buffer(w, &(SDL_Color){136, 255, 38, 0});
 		w->color = hsv2rgb(pal->hsv.h, pal->hsv.s, pal->hsv.v);
@@ -63,12 +65,13 @@ int main()
 		upd_win(w);
 	}
 
+	picker_delete(&pal);
 	close_win(&w);
 
 	if (w != NULL)
 		printf("Error\n");
 	SDL_Quit();
 
-	// system("leaks libmgl");
+	system("leaks libmgl");
 	return (0);
 }
