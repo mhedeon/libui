@@ -55,7 +55,7 @@ void picker_set_slider_pal(t_picker *p)
 
 	color = hsv2rgb(p->hsv.h, p->hsv.s, p->hsv.v);
 	slider_set_pos(p->sl_pal, p->pos.x + (int)(p->pos.w *
-		p->hsv.s), p->pos.y + (int)(p->pos.h * p->hsv.v));
+		p->hsv.s), p->pos.y + p->pos.h - (int)(p->pos.h * p->hsv.v));
 	slider_set_color(p->sl_pal, &color);
 }
 

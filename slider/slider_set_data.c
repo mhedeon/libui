@@ -6,13 +6,13 @@ void slider_set_pos(t_slider *sl, int x, int y)
 		return ;
 	if (x < sl->border.x)
 		sl->pos.x = sl->border.x - SLIDER_BORDER;
-	else if (x > sl->border.w)
+	else if (x > (sl->border.w - sl->pos.w))
 		sl->pos.x = sl->border.w - sl->pos.w - SLIDER_BORDER;
 	else
 		sl->pos.x = x - SLIDER_BORDER;
 	if (y < sl->border.y)
 		sl->pos.y = sl->border.y - SLIDER_BORDER;
-	else if (y > sl->border.h)
+	else if (y > (sl->border.h - sl->pos.h))
 		sl->pos.y = sl->border.h - sl->pos.h - SLIDER_BORDER;
 	else
 		sl->pos.y = y - SLIDER_BORDER;
