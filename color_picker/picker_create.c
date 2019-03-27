@@ -32,6 +32,8 @@ void			picker_delete(t_picker **picker)
 {
 	if (*picker == NULL)
 		return ;
+	slider_delete(&(*picker)->sl_hue);
+	slider_delete(&(*picker)->sl_pal);
 	free(*picker);
 	*picker = NULL;
 }

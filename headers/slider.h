@@ -13,6 +13,7 @@ typedef struct	s_slider
 }				t_slider;
 
 t_slider *slider_create(int width, int height);
+void slider_delete(t_slider **sl);
 
 void slider_draw(t_window *win, t_slider *sl);
 

@@ -17,3 +17,11 @@ t_slider *slider_create(int width, int height)
 	new->color = (SDL_Color) { 255, 255, 255, 0 };
 	return (new);
 }
+
+void slider_delete(t_slider **sl)
+{
+	if (*sl == NULL)
+		return ;
+	free(*sl);
+	*sl = NULL;
+}
