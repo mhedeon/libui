@@ -2,3 +2,4 @@ obj
 libmgl
 *.sln
 Debug
+screenshot*.png
