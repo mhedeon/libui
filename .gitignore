@@ -1,5 +1,6 @@
 obj
 libmgl
+libmg.a
 *.sln
 Debug
 screenshot*.png
