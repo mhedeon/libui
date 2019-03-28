@@ -1,4 +1,4 @@
-NAME = libmgl
+NAME = libmgl.a
 
 #------------------------------- HEADERS ---------------------------------------
 H_DIR = ./headers
@@ -13,14 +13,6 @@ H_LIST = libmgl.h \
 			screenshot.h
 
 HEADERS = $(addprefix $(H_DIR)/, $(H_LIST))
-#-------------------------------------------------------------------------------
-
-#------------------------------- TEST ------------------------------------------
-TEST_DIR = ./test
-
-TEST_SRC = main.c
-
-TEST_SRC_LIST = $(addprefix $(TEST_DIR)/, TEST_SRC)
 #-------------------------------------------------------------------------------
 
 #------------------------------- WINDOW ----------------------------------------
@@ -98,7 +90,6 @@ SCREENSHOT_SRC_LIST = $(addprefix $(SCREENSHOT_DIR)/, $(SCREENSHOT_SRC_LIST))
 #------------------------------- OBJECTS ---------------------------------------
 OBJ_DIR = ./obj
 
-OBJ_LIST = $(addprefix $(OBJ_DIR)/, $(TEST_SRC:.c=.o))
 OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(WINDOW_SRC:.c=.o))
 OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(TTF_SRC:.c=.o))
 OBJ_LIST += $(addprefix $(OBJ_DIR)/, $(CHECKBOX_SRC:.c=.o))
@@ -133,14 +124,10 @@ $(OBJ_DIR):
 
 #------------------------------- LINK ------------------------------------------
 $(NAME): $(OBJ_DIR) $(OBJ_LIST) $(HEADERS)
-	@gcc -o $(NAME) $(OBJ_LIST) $(FRAMEWORKS)
+	@ar rc $(NAME) $(OBJ_LIST)
 #-------------------------------------------------------------------------------
 
 #------------------------------- COMPILE ---------------------------------------
-#------------------------------- TEST
-$(OBJ_DIR)/%.o : $(TEST_DIR)/%.c $(HEADERS)
-	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)
-
 #------------------------------- WINDOW
 $(OBJ_DIR)/%.o : $(WINDOW_DIR)/%.c $(HEADERS)
 	@gcc $(FLAGS) -c $< -o $@ $(INCLUDES)

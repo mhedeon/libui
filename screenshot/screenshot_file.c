@@ -10,32 +10,32 @@ int file_exist(const char *filename)
 	return (1);
 }
 
-// static size_t		mgl_strlen(const char *s)
-// {
-// 	size_t	len;
+static size_t		mgl_strlen(const char *s)
+{
+	size_t	len;
 
-// 	len = 0;
-// 	while (*((char *)s))
-// 	{
-// 		len++;
-// 		s++;
-// 	}
-// 	return (len);
-// }
+	len = 0;
+	while (*((char *)s))
+	{
+		len++;
+		s++;
+	}
+	return (len);
+}
 
-// static char	*mgl_strcpy(char *dst, const char *src)
-// {
-// 	int	i;
+static char	*mgl_strcpy(char *dst, const char *src)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (*(src + i))
-// 	{
-// 		*(dst + i) = *(src + i);
-// 		i++;
-// 	}
-// 	*(dst + i) = '\0';
-// 	return (dst);
-// }
+	i = 0;
+	while (*(src + i))
+	{
+		*(dst + i) = *(src + i);
+		i++;
+	}
+	*(dst + i) = '\0';
+	return (dst);
+}
 
 char *file_name(void)
 {
@@ -44,13 +44,13 @@ char *file_name(void)
 	static Uint8 i2 = 0;
 	size_t name_size;
 
-	name_size = SDL_strlen("screenshot00.png") + 1;
+	name_size = mgl_strlen("screenshot00.png") + 1;
 	if ((filename = (char*)malloc(sizeof(char) * name_size)) == NULL)
 	{
 		error_log("mmry error");
 		return (NULL);
 	}
-	SDL_strlcpy(filename, "screenshot00.png", name_size);
+	mgl_strcpy(filename, "screenshot00.png");
 	while (i1 < 10)
 	{
 		if (!file_exist(filename))
