@@ -30,22 +30,8 @@ typedef struct		s_window
 **	---------------------------- window_create.c | start
 */
 
-/*
-**	\brief Creates a new ready-to-drawing window.
-**	\param title The title of the window? in UTF-8 encoding.
-**	\param w Width of the window.
-**	\param h Height of the window.
-**	\return Structure with window, renderer, texture,
-**	and buffer, or NULL if creation failed.
-**	\note Default position of the window if SDL_WINDOWPOS_CENTERED.
-*/
 t_window			*window_create(char *title, SDL_Rect *rect, int resizale);
-
-/*
-**	\brief Destroy the specified structure and sets the pointer to NULL.
-**	\param win Double pointer to t_window structure.
-**	\note Sets the poiner to NULL
-*/
+int		window_resize(t_window *win);
 void				window_close(t_window **win);
 
 /*
@@ -56,31 +42,7 @@ void				window_close(t_window **win);
 **	---------------------------- window_update.c | start
 */
 
-/*
-**	\brief Draws the context on the window.
-**	\param win Pointer to t_window structure.
-**	\note buffer -> texture -> render.
-*/
 void				upd_win(t_window *win);
-
-/*
-**	\brief Draws a part the context on the window.
-**	\param win Pointer to t_window structure.
-**	\param r A pointer to the rectangular of pixels to update.
-**	\note Updates a part of the texture from the buffer.
-**	Copies the entire texture into a renderer with a previous renderer cleanup.
-*/
-void				upd_area_tex(t_window *win, SDL_Rect *r);
-
-/*
-**	\brief Draws a part the context on the window.
-**	\param win Pointer to t_window structure.
-**	\param r A pointer to the rectangular of pixels to update.
-**	\note Updates entire texture from the buffer.
-**	Copies a part of the texture to the same part of the renderer
-**	without a previous renderer cleanup.
-*/
-void				upd_area_ren(t_window *win, SDL_Rect *r);
 
 /*
 **	---------------------------- window_update.c | end
@@ -116,6 +78,32 @@ int					window_within(t_window *win, int x, int y);
 
 /*
 **	---------------------------- pixel.c | end
+*/
+
+/*
+**	---------------------------- window_get.c | start
+*/
+
+int window_get_pos(t_window *win, int *x, int *y);
+int window_get_size(t_window *win, int *w, int *h);
+const char *window_get_title(t_window *win);
+
+/*
+**	---------------------------- window_get.c | end
+*/
+
+void window_set_pos(t_window *win, int x, int y);
+void window_set_size(t_window *win, int w, int h);
+void window_set_title(t_window *win, const char *title);
+
+/*
+**	---------------------------- window_set.c | start
+*/
+
+
+
+/*
+**	---------------------------- window_set.c | end
 */
 
 #endif

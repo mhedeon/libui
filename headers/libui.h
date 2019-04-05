@@ -55,5 +55,6 @@
 # define INVALID_POINTER 0xFF
 
 # define KEY(k) (e.type == SDL_KEYDOWN && e.key.keysym.sym == k)
+# define QUIT (e.type == SDL_QUIT)
 
 #endif

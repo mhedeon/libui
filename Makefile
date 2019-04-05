@@ -22,7 +22,9 @@ WINDOW_SRC = window_create.c \
 				window_update.c \
 				error.c \
 				pixel.c \
-				window_draw.c
+				window_draw.c \
+				window_get.c \
+				window_set.c
 
 WINDOW_SRC_LIST = $(addprefix $(WINDOW_DIR)/, $(WINDOW_SRC))
 #-------------------------------------------------------------------------------

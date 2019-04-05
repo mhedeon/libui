@@ -10,20 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libmgl.h"
+#include "libui.h"
 
-static int		init_win(t_window *win, char *title, int w, int h)
+static int		window_init(t_window *win, char *title, SDL_Rect *rect, SDL_WindowFlags flags)
 {
-	win->win = NULL;
-	win->ren = NULL;
-	win->tex = NULL;
-	win->buff = NULL;
-	win->w = w > 0 ? w : 100;
-	win->h = h > 0 ? h : 100;
+	win->w = rect->w > 0 ? rect->w : 100;
+	win->h = rect->h > 0 ? rect->h : 100;
+	rect->x = rect->x > 0 ? rect->x : SDL_WINDOWPOS_CENTERED;
+	rect->y = rect->y > 0 ? rect->y : SDL_WINDOWPOS_CENTERED;
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 		return (error_log("Unable to initialize SDL:"));
-	if ((win->win = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED, win->w, win->h, SDL_WINDOW_SHOWN)) == NULL)
+	if ((win->win = SDL_CreateWindow(title, rect->x,
+		rect->y, win->w, win->h, flags)) == NULL)
 		return (error_log("Could not create window:"));
 	if ((win->ren = SDL_CreateRenderer(win->win, -1, SDL_RENDERER_ACCELERATED |
 		SDL_RENDERER_PRESENTVSYNC)) == NULL)
@@ -39,24 +37,52 @@ static int		init_win(t_window *win, char *title, int w, int h)
 	return (1);
 }
 
-t_window		*create_win(char *title, int w, int h)
+t_window		*window_create(char *title, SDL_Rect *rect, int resizale)
 {
 	t_window	*win;
+	SDL_WindowFlags flags;
 
+	flags = resizale > 0 ? SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE :
+															SDL_WINDOW_SHOWN;
 	if ((win = (t_window*)malloc(sizeof(t_window))) == NULL)
 	{
 		error_log("Could not allocate memory for window");
 		return (NULL);
 	}
-	if (!init_win(win, title, w, h))
+	win->win = NULL;
+	win->ren = NULL;
+	win->tex = NULL;
+	win->buff = NULL;
+	if (!window_init(win, title, rect, flags))
 	{
-		close_win(&win);
+		window_close(&win);
 		return (NULL);
 	}
 	return (win);
 }
 
-void			close_win(t_window **win)
+int		window_resize(t_window *win)
+{
+	int w;
+	int h;
+
+	SDL_GetWindowSize(win->win, &w, &h);
+	win->w = w;
+	win->h = h;
+	SDL_DestroyTexture(win->tex);
+	free(win->buff);
+	win->buff = NULL;
+	if ((win->tex = SDL_CreateTexture(win->ren, SDL_PIXELFORMAT_RGBA8888,
+		SDL_TEXTUREACCESS_TARGET, win->w, win->h)) == NULL)
+		return (error_log("Could not create texture:"));
+	if ((win->buff = (Uint32*)malloc(sizeof(Uint32) *
+		(win->h * win->w))) == NULL)
+		return (error_log("Could not allocate memory for buff"));
+	clear_buffer(win);
+	return (1);
+}
+
+void			window_close(t_window **win)
 {
 	if (*win == NULL)
 		return ;
