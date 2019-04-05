@@ -1,6 +1,6 @@
 obj
-libmgl
-libmg.a
+libui
+libui.a
 *.sln
 Debug
 screenshot*.png
