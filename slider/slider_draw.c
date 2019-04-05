@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libmgl.h"
+#include "libui.h"
 
 #define BLACK &(SDL_Color){0, 0, 0, 0}
 #define WHITE &(SDL_Color){255, 255, 255, 0}

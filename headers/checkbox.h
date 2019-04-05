@@ -13,7 +13,7 @@
 #ifndef CHECKBOX_H
 # define CHECKBOX_H
 
-# include "libmgl.h"
+# include "libui.h"
 
 # define CHECKBOX_SIZE 15
 

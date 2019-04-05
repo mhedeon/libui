@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libmgl.h"
+#include "libui.h"
 
 TTF_Font		*ttf_open_font(char *name, int size)
 {

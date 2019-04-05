@@ -6,12 +6,12 @@
 /*   By: mhedeon <mhedeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 05:27:49 by mhedeon           #+#    #+#             */
-/*   Updated: 2019/03/31 05:27:51 by mhedeon          ###   ########.fr       */
+/*   Updated: 2019/04/05 19:19:31 by mhedeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBMGL_H
-# define LIBMGL_H
+#ifndef LIBUI_H
+# define LIBUI_H
 
 /*
 **	Dynamic checking of Operating System
@@ -53,5 +53,7 @@
 # include "screenshot.h"
 
 # define INVALID_POINTER 0xFF
+
+# define KEY(k) (e.type == SDL_KEYDOWN && e.key.keysym.sym == k)
 
 #endif

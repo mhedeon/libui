@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libmgl.h"
+#include "libui.h"
 
 int	checkbox_within(t_checkbox *check, int x, int y)
 {

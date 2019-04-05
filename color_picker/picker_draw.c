@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libmgl.h"
+#include "libui.h"
 
 void	picker_draw(t_window *win, t_picker *picker)
 {

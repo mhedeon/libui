@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libmgl.h"
+#include "libui.h"
 
 SDL_Rect		picker_get_pos(t_picker *picker)
 {

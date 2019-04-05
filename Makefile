@@ -3,7 +3,7 @@ NAME = libui.a
 #------------------------------- HEADERS ---------------------------------------
 H_DIR = ./headers
 
-H_LIST = libmgl.h \
+H_LIST = libui.h \
 			window.h \
 			ttf.h \
 			checkbox.h \

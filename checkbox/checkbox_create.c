@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libmgl.h"
+#include "libui.h"
 
 t_checkbox		*checkbox_create(Uint8 status, Uint8 available, int x, int y)
 {

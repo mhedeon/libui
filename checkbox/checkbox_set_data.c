@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libmgl.h"
+#include "libui.h"
 
 void	checkbox_set_status(t_checkbox *check, Uint8 status)
 {

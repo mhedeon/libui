@@ -13,7 +13,7 @@
 #ifndef SCREENSHOT_H
 # define SCREENSHOT_H
 
-# include "libmgl.h"
+# include "libui.h"
 
 int		file_exist(const char *filename);
 char	*file_name(void);

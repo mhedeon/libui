@@ -13,7 +13,7 @@
 #ifndef COLOR_H
 # define COLOR_H
 
-# include "libmgl.h"
+# include "libui.h"
 
 typedef struct	s_hsv
 {

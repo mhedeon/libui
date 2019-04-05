@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libmgl.h"
+#include "libui.h"
 
 void	set_pixel(t_window *win, SDL_Color *color, int x, int y)
 {

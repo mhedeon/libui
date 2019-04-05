@@ -13,7 +13,7 @@
 #ifndef SLIDER_H
 # define SLIDER_H
 
-# include "libmgl.h"
+# include "libui.h"
 
 # define SLIDER_BORDER 3
 

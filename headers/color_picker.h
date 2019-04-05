@@ -13,7 +13,7 @@
 #ifndef COLOR_PICKER_H
 # define COLOR_PICKER_H
 
-# include "libmgl.h"
+# include "libui.h"
 
 typedef struct	s_picker
 {

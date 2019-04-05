@@ -13,7 +13,7 @@
 #ifndef WINDOW_H
 # define WINDOW_H
 
-# include "libmgl.h"
+# include "libui.h"
 
 typedef struct		s_window
 {
@@ -39,14 +39,14 @@ typedef struct		s_window
 **	and buffer, or NULL if creation failed.
 **	\note Default position of the window if SDL_WINDOWPOS_CENTERED.
 */
-t_window			*create_win(char *title, int w, int h);
+t_window			*window_create(char *title, SDL_Rect *rect, int resizale);
 
 /*
 **	\brief Destroy the specified structure and sets the pointer to NULL.
 **	\param win Double pointer to t_window structure.
 **	\note Sets the poiner to NULL
 */
-void				close_win(t_window **win);
+void				window_close(t_window **win);
 
 /*
 **	---------------------------- window_create.c | end

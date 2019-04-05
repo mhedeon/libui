@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "screenshot.h"
+#include "libui.h"
 
 static void		screenshot_error(SDL_Surface *scr, const char *msg)
 {

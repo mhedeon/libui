@@ -13,7 +13,7 @@
 #ifndef TTF_H
 # define TTF_H
 
-# include "libmgl.h"
+# include "libui.h"
 
 TTF_Font	*ttf_open_font(char *name, int size);
 void		ttf_close_font(TTF_Font *font);
