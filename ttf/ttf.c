@@ -6,7 +6,7 @@
 /*   By: mhedeon <mhedeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 05:20:07 by mhedeon           #+#    #+#             */
-/*   Updated: 2019/03/31 05:20:45 by mhedeon          ###   ########.fr       */
+/*   Updated: 2019/04/05 19:10:50 by mhedeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			ttf_render_text(SDL_Renderer *ren, TTF_Font *font, SDL_Rect *r,
 	SDL_Surface	*sur;
 	SDL_Texture	*msg;
 
-	sur = TTF_RenderText_Solid(font, text, (SDL_Color) { 255, 255, 255, 0 });
+	sur = TTF_RenderText_Blended(font, text, (SDL_Color) { 255, 255, 255, 0 });
 	if (sur == NULL)
 	{
 		error_log("Text error");
