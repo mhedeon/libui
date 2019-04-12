@@ -12,6 +12,18 @@
 
 #include "libui.h"
 
+static int window_malloc(t_window **win)
+{
+	if ((*win = (t_window*)malloc(sizeof(t_window))) == NULL)
+		return (error_log("Could not allocate memory for window"));
+	(*win)->win = NULL;
+	(*win)->ren = NULL;
+	(*win)->tex = NULL;
+	(*win)->buff = NULL;
+
+	return (1);
+}
+
 static int		window_init(t_window *win, char *title, SDL_Rect *rect, SDL_WindowFlags flags)
 {
 	win->w = rect->w > 0 ? rect->w : 100;
@@ -37,28 +49,45 @@ static int		window_init(t_window *win, char *title, SDL_Rect *rect, SDL_WindowFl
 	return (1);
 }
 
-t_window		*window_create(char *title, SDL_Rect *rect, int resizale)
+t_window* window_create(char* title, SDL_Rect* rect, SDL_Color *bg_color)
 {
-	t_window	*win;
+	t_window* win;
 	SDL_WindowFlags flags;
 
-	flags = resizale > 0 ? SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE :
-															SDL_WINDOW_SHOWN;
-	if ((win = (t_window*)malloc(sizeof(t_window))) == NULL)
-	{
-		error_log("Could not allocate memory for window");
+	flags = SDL_WINDOW_SHOWN;
+	if (!window_malloc(&win))
 		return (NULL);
-	}
-	win->win = NULL;
-	win->ren = NULL;
-	win->tex = NULL;
-	win->buff = NULL;
+	win->bg_color = (bg_color == NULL) ? (SDL_Color) { 0, 0, 0, 0 } : *bg_color;
 	if (!window_init(win, title, rect, flags))
 	{
 		window_close(&win);
 		return (NULL);
 	}
 	return (win);
+}
+
+t_window		*window_create_resizable(char *title, SDL_Rect *rect, SDL_Color* bg_color)
+{
+	t_window	*win;
+	SDL_WindowFlags flags;
+
+	flags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
+	if (!window_malloc(&win))
+		return (NULL);
+	win->bg_color = (bg_color == NULL) ? (SDL_Color) { 0, 0, 0, 0 } : *bg_color;
+	if (!window_init(win, title, rect, flags))
+	{
+		window_close(&win);
+		return (NULL);
+	}
+	return (win);
+}
+
+t_window* window_create_background(/* TODO */)
+{
+	// TODO
+	// create window with background texture
+	return (NULL);
 }
 
 int		window_resize(t_window *win)

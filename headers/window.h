@@ -23,6 +23,8 @@ typedef struct		s_window
 	SDL_Renderer	*ren;
 	SDL_Texture		*tex;
 	Uint32			*buff;
+	SDL_Event		e;
+	SDL_Color		bg_color;
 	SDL_Color		color;
 }					t_window;
 
@@ -30,7 +32,9 @@ typedef struct		s_window
 **	---------------------------- window_create.c | start
 */
 
-t_window			*window_create(char *title, SDL_Rect *rect, int resizale);
+t_window* window_create(char* title, SDL_Rect* rect, SDL_Color* bg_color);
+t_window* window_create_resizable(char* title, SDL_Rect* rect, SDL_Color* bg_color);
+t_window* window_create_background(/* TODO */);
 int		window_resize(t_window *win);
 void				window_close(t_window **win);
 

@@ -77,6 +77,6 @@ void			picker_set_slider_hue(t_picker *p)
 	SDL_Color	color;
 
 	color = hsv2rgb(p->hsv.h, 1.0, 1.0);
-	slider_set_pos(p->sl_hue, 0, p->pos.y + p->hsv.h * p->hue.h / 360.0);
+	slider_set_pos(p->sl_hue, 0, (int)(p->pos.y + p->hsv.h * p->hue.h / 360.0));
 	slider_set_color(p->sl_hue, &color);
 }

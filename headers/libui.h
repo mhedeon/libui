@@ -16,11 +16,12 @@
 /*
 **	Dynamic checking of Operating System
 */
-# ifndef _APPLE_
+# ifdef _APPLE_
 #  include "SDL.h"
 #  include "SDL_image.h"
 #  include "SDL_ttf.h"
 #  include "SDL_mixer.h"
+#  include <unistd.h>
 # elif _WIN32
 #  include <SDL.h>
 #  include <SDL_image.h>
@@ -31,6 +32,7 @@
 #  include "SDL_image.h"
 #  include "SDL_ttf.h"
 #  include "SDL_mixer.h"
+#  include <unistd.h>
 # endif
 
 /*
@@ -39,7 +41,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <unistd.h>
 
 /*
 **	Parts of libmgl
@@ -54,7 +55,7 @@
 
 # define INVALID_POINTER 0xFF
 
-# define KEY(k) (e.type == SDL_KEYDOWN && e.key.keysym.sym == k)
+# define KEY(e, k) (e.type == SDL_KEYDOWN && e.key.keysym.sym == k)
 # define QUIT (e.type == SDL_QUIT)
 
 #endif
