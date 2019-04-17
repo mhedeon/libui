@@ -16,7 +16,7 @@
 /*
 **	Dynamic checking of Operating System
 */
-# ifdef _APPLE_
+# ifdef __APPLE__
 #  include "SDL.h"
 #  include "SDL_image.h"
 #  include "SDL_ttf.h"
@@ -27,7 +27,7 @@
 #  include <SDL_image.h>
 #  include <SDL_ttf.h>
 #  include <SDL_mixer.h>
-# elif _linux_
+# elif __linux__
 #  include "SDL.h"
 #  include "SDL_image.h"
 #  include "SDL_ttf.h"
